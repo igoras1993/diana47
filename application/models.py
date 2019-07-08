@@ -85,21 +85,6 @@ class users(BaseEntity):
     def check_password(self, passwd):
         return self.h_pass is not None and check_password_hash(self.h_pass, passwd)
 
-    def register_google_user(self, google_id, email=None):
-        self.heritage = 'google'
-        self.h_pass = None
-        self.email = email
-        self.id = google_id
-
-    def check_integrity(self, id, email):
-        return self.id == id and self.email == email and self.heritage == heritage
-
-    def register_facebook_user(self, fb_id):
-        self.heritage = 'facebook'
-        self.h_pass = None
-        self.email = None
-        self.id = fb_id
-
 
 # ##--RBAC--##
 class ObjectEnum(BaseEnum):
